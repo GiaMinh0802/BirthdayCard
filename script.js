@@ -109,7 +109,16 @@
     typedText.scrollTop = typedText.scrollHeight;
   }
 
-  replayTypingBtn.addEventListener('click', startTyping);
+  function scrollToLetterText() {
+    typedText.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  function replayTypingAndScroll() {
+    startTyping();
+    requestAnimationFrame(scrollToLetterText);
+  }
+
+  replayTypingBtn.addEventListener('click', replayTypingAndScroll);
   showAllBtn.addEventListener('click', showAllMessage);
   scrollAlbumBtn.addEventListener('click', () => albumSection.scrollIntoView({ behavior: 'smooth' }));
 
@@ -129,7 +138,7 @@
   musicToggle.addEventListener('click', async () => {
     if (birthdayMusic.paused) {
       try {
-        birthdayMusic.volume = 0.55;
+        birthdayMusic.volume = 0.35;
         await birthdayMusic.play();
         musicToggle.classList.add('playing');
         musicText.textContent = 'Tắt nhạc';
