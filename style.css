@@ -680,6 +680,12 @@ h2 span {
     font-size: clamp(2.35rem, 10.5vw, 3.35rem);
     line-height: 1.04;
   }
+  .cover-copy h2 span {
+    display: inline;
+  }
+  .cover-copy h2 span + span::before {
+    content: " ";
+  }
   .subtitle {
     margin: 18px auto 22px;
     font-size: .98rem;
