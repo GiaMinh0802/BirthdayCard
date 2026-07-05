@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f8d7ff" />
+  <title>Happy Birthday Na 💗</title>
+  <link rel="preload" href="assets/photos/photo-01.jpg" as="image" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="skyCanvas" aria-hidden="true"></canvas>
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <div class="aurora" aria-hidden="true">
+    <span></span><span></span><span></span><span></span>
+  </div>
+
+  <button class="music-toggle glass" id="musicToggle" aria-label="Bật hoặc tắt nhạc sinh nhật">
+    <span id="musicIcon">♪</span>
+    <span id="musicText">Bật nhạc</span>
+  </button>
+  <audio id="birthdayMusic" preload="none" loop src="assets/music/birthday.mp3"></audio>
+
+  <main>
+    <section class="hero" id="hero">
+      <div class="hero-card glass tilt-card">
+        <p class="eyebrow">For Naiuowiiiii</p>
+        <h1>Happy Birthday, em bé của Win</h1>
+
+        <button class="envelope-wrap" id="openEnvelope" aria-label="Mở phong bì sinh nhật">
+          <span class="envelope" aria-hidden="true">
+            <span class="env-shadow"></span>
+            <span class="env-back"></span>
+            <span class="letter-peek">
+              <span>Dear Na</span>
+              <strong>Click để mở thiệp</strong>
+              <em>with love</em>
+            </span>
+            <span class="env-left"></span>
+            <span class="env-right"></span>
+            <span class="env-bottom"></span>
+            <span class="env-flap"></span>
+            <span class="env-heart">❤</span>
+          </span>
+        </button>
+        <p></p>
+      </div>
+    </section>
+
+    <section class="birthday-section hidden" id="birthdaySection">
+      <div class="book-shell tilt-card" id="bookShell">
+        <div class="book-cover glass">
+          <div class="cover-photo-wrap">
+            <img src="assets/photos/photo-01.jpg" alt="Ảnh kỷ niệm" />
+            <div class="cover-glow"></div>
+          </div>
+          <div class="cover-copy">
+            <p class="eyebrow">Birthday Letter</p>
+            <h2>Gửi Na yêu thương</h2>
+            <p></p>
+            <button class="soft-btn" id="replayTyping">Viết lại lời chúc</button>
+          </div>
+        </div>
+
+        <article class="letter-page glass">
+          <div class="page-topper">
+            <span>✦ 22 ✦</span>
+            <span>Winiuowiiiii with love</span>
+          </div>
+          <div id="typedText" class="typed-text" aria-live="polite"></div>
+          <div class="letter-actions">
+            <button class="soft-btn" id="showAllBtn">Hiện hết lời chúc</button>
+            <button class="soft-btn ghost" id="scrollAlbumBtn">Xem album ảnh</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="album-section hidden" id="albumSection">
+      <div class="section-heading glass">
+        <p class="eyebrow">Our Little Gallery</p>
+        <h2>Album ảnh của Na</h2>
+        <p>Mỗi tấm ảnh là một khoảnh khắc xinh xắn được giữ lại trong chiếc thiệp này.</p>
+      </div>
+      <div class="photo-grid" id="photoGrid"></div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Xem ảnh lớn">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Đóng ảnh">×</button>
+    <button class="lightbox-nav prev" id="prevPhoto" aria-label="Ảnh trước">‹</button>
+    <img id="lightboxImg" alt="Ảnh kỷ niệm phóng to" />
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+    <button class="lightbox-nav next" id="nextPhoto" aria-label="Ảnh tiếp theo">›</button>
+  </div>
+
+  <div class="toast glass" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    window.BIRTHDAY_MESSAGE = "Gửi Naiuowiiiii thân iuuuuuuuuuuuuu,\n\nChúc mừng sinh nhật em bé của Win!\n\nAnh chúc Na bước sang tuổi mới với thật nhiều dịu dàng và may mắn. Mong những ngày phía trước của em luôn nhẹ nhàng, đủ nắng sau những cơn mưa, đủ bình yên sau những ngày mệt mỏi, và luôn có những điều đẹp đẽ âm thầm ở bên cạnh. Chúc em giữ mãi sự chân thành với những điều em yêu, đủ mạnh mẽ để theo đuổi những ước mơ của mình, và đủ tự tin để luôn xứng đáng với những điều tốt đẹp nhất. Nhớ chăm sóc bản thân nhiều hơn, đừng thức khuya quá, đừng buồn vì những chuyện không đáng, và cũng đừng bao giờ tự ti về chính mình nhé.\n\nNa biết không, mỗi ngày ở bên em đều là một ngày thật đẹp. Anh cảm thấy hạnh phúc và may mắn lắm luôn. Có lẽ vì chúng mình có quá nhiều điểm giống nhau nên khi ở bên Na, anh có cảm giác thân thuộc như đang ở cạnh một người thân trong gia đình.\n\nAnh thích lắm, mê lắm câu “iu lốmmm” mỗi khi Na nói với anh. Nhưng anh nghĩ chắc có hai điều mà anh còn mê hơn rất rất nhiều, đó là nụ cười của em và câu “em ghéc anh”.\n\nAnh thích ngắm Na cười lắm, cũng chẳng hiểu vì sao nữa. Chỉ là mỗi khi nhìn thấy nụ cười ấy, tim anh như dịu lại, lòng anh cũng bình yên hơn. Thế nên anh mong Na sẽ luôn giữ nụ cười trên môi nhé.\n\nCòn câu “em ghéc anh” thì nghĩ lại thấy buồn cười thật. Chắc số lần em nói câu này còn nhiều hơn cả số lần em nói yêu anh nữa. Nghe là “ghéc”, nhưng thật ra là rất iu, anh biết hết trơn. Nhiều lúc anh ngồi ở quán cà phê chờ Na, hay những lúc hai đứa ngồi cạnh nhau mà chẳng biết nói gì, hoặc khi gọi cho nhau nhưng cả hai cùng “xoay ngang” chăm chú thăm cái trại, câu “em ghéc anh” vang lên vừa buồn cười vừa dễ thương.\n\nNhưng anh cũng muốn thật lòng xin lỗi Na rất rất nhiều. Có lẽ vì anh vô tư quá nên đôi lúc anh vô tình buông ra những lời làm Na buồn, làm Na khóc. Tuy anh không có ý xấu, nhưng anh hiểu rằng đôi khi chỉ một câu nói thôi cũng có thể làm tổn thương một trái tim. Có lẽ đây là một điểm chưa tốt của anh mà anh thật sự cần phải khắc phục.\n\nAnh không muốn làm “người dưng” với Na đâu. Mong là sau này, nếu anh lỡ làm Na buồn, em cứ nói cho anh biết nhé. Đừng giữ trong lòng để rồi vô tình tạo nên một bức tường giữa đôi ta.\n\nTuổi mới vừa hay cũng là một hành trình mới sắp mở ra. Anh mong Na chân cứng đá mềm, vươn tới những mục tiêu lớn lao và luôn cảm thấy hạnh phúc. Tuổi 22 nghe thì có vẻ lớn rồi, nhưng thật ra em cũng chỉ vừa bắt đầu tập làm người lớn mà thôi.\n\nDù tương lai phía trước có như thế nào đi nữa, Na hãy luôn nhớ gọi “Win ơiiii” mỗi khi em cần nhé. Anh sẽ luôn ở bên cạnh ủng hộ và đồng hành cùng em. Người ta nói “Muốn đi nhanh thì đi một mình”, nhưng thật tốt biết bao nếu có một người đi cùng để bớt cảm giác cô đơn, đúng không nè. Người ta cũng hay nói: “Nếu em là cây, anh sẽ đứng dưới tán em.” Nhưng anh lại muốn mình là bầu trời, để có thể ôm trọn lấy em, che chở cho Na và luôn ở đó cùng em.\n\nHôm nay là một ngày thật đặc biệt. Anh chỉ mong em cảm nhận được tình yêu anh dành cho em, không chỉ trong những lời nói mà còn trong những hành động, từng cái nắm tay, từng cái ôm và cả những nụ hôn nữa.\n\nChúc Na có một ngày sinh nhật thật ngọt ngào, đầy ắp tiếng cười và những khoảnh khắc thật đáng nhớ nha. Anh mong người đón sinh nhật cùng em năm sau, năm sau nữa và thật nhiều năm sau nữa vẫn sẽ là Winiuowiiiii nhé!\n\nFrom Winiuowiiiii with love.";
+    window.BIRTHDAY_PHOTOS = [
+  "assets/photos/photo-01.jpg",
+  "assets/photos/photo-02.jpg",
+  "assets/photos/photo-03.jpg",
+  "assets/photos/photo-04.jpg",
+  "assets/photos/photo-05.jpg",
+  "assets/photos/photo-06.jpg",
+  "assets/photos/photo-07.jpg",
+  "assets/photos/photo-08.jpg",
+  "assets/photos/photo-09.jpg",
+  "assets/photos/photo-10.jpg",
+  "assets/photos/photo-11.jpg",
+  "assets/photos/photo-12.jpg",
+  "assets/photos/photo-13.jpg"
+];
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
