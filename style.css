@@ -24,7 +24,7 @@ body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
-  font-family: ui-rounded, "SF Pro Rounded", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Be Vietnam Pro", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--ink);
   background:
     radial-gradient(circle at 12% 12%, rgba(255, 214, 232, .95), transparent 34%),
@@ -33,6 +33,9 @@ body {
   background-size: 160% 160%;
   animation: pageGradient 16s ease-in-out infinite alternate;
   text-rendering: optimizeLegibility;
+}
+button, input, textarea, select {
+  font: inherit;
 }
 
 body::before {
@@ -165,7 +168,14 @@ h1 {
   color: transparent;
   text-shadow: 0 16px 46px rgba(255, 143, 196, .28);
 }
+h1 span {
+  display: block;
+  white-space: nowrap;
+}
 h2 { font-size: clamp(2rem, 5vw, 4.2rem); }
+h2 span {
+  display: block;
+}
 .subtitle {
   max-width: 680px;
   margin: 22px auto 28px;
@@ -273,7 +283,7 @@ h2 { font-size: clamp(2rem, 5vw, 4.2rem); }
   z-index: 1;
 }
 .letter-peek strong { font-size: clamp(1.05rem, 3vw, 1.6rem); }
-.letter-peek span, .letter-peek em { font-family: ui-serif, Georgia, serif; }
+.letter-peek span, .letter-peek em { font-family: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif; }
 .letter-peek span {
   font-size: clamp(.82rem, 2.4vw, 1.05rem);
   line-height: 1;
@@ -399,7 +409,9 @@ h2 { font-size: clamp(2rem, 5vw, 4.2rem); }
 .typed-text {
   margin-top: 24px;
   white-space: pre-wrap;
-  font-size: clamp(.98rem, 1.5vw, 1.1rem);
+  font-family: "Mali", "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif;
+  font-size: clamp(1.04rem, 1.55vw, 1.18rem);
+  font-weight: 500;
   line-height: 1.88;
   color: rgba(56, 43, 65, .91);
   max-height: min(64vh, 720px);
@@ -606,6 +618,10 @@ h2 { font-size: clamp(2rem, 5vw, 4.2rem); }
 @media (min-width: 901px) {
   .hero-card {
     width: min(860px, calc(100vw - 72px));
+  }
+  h1 {
+    font-size: clamp(4.4rem, 7.2vw, 5.45rem);
+    line-height: 1.02;
   }
   .envelope-wrap {
     width: clamp(360px, 36vw, 430px);

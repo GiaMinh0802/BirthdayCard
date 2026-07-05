@@ -125,7 +125,7 @@
   async function tryPlaySoftly() {
     // Browser policies still require a user gesture; opening the envelope is that gesture.
     if (!birthdayMusic || !birthdayMusic.getAttribute('src')) return;
-    birthdayMusic.volume = 0.55;
+    birthdayMusic.volume = 0.2;
     try {
       await birthdayMusic.play();
       musicToggle.classList.add('playing');
@@ -138,7 +138,7 @@
   musicToggle.addEventListener('click', async () => {
     if (birthdayMusic.paused) {
       try {
-        birthdayMusic.volume = 0.35;
+        birthdayMusic.volume = 0.2;
         await birthdayMusic.play();
         musicToggle.classList.add('playing');
         musicText.textContent = 'Tắt nhạc';
